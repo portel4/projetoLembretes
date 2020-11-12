@@ -21,11 +21,11 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/notas', (req, res, next) => {
-    Livro.find().then(
+    Notas.find().then(
         Lista => {
             res.status(200).json({
                 mensagem: "Tudo OK",
-                livros: Lista
+                notas: Lista
             });
         })
 });

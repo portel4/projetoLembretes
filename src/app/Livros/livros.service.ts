@@ -12,9 +12,8 @@ constructor (private httpClient: HttpClient){
 }
 
   getNotas(): void {
-    this.httpClient.get <{mensagem: string, notas:
-    Notas[]}>('http://localhost:3000/api/notas').subscribe(
-    (dados) => {
+    this.httpClient.get<{mensagem: string, notas:Notas[]}>('http://localhost:3000/api/notas')
+    .subscribe((dados) => {
     this.notas = dados.notas;
     this.listaNotasAtualizada.next([...this.notas]);
     }
@@ -26,9 +25,8 @@ constructor (private httpClient: HttpClient){
     descricao: descricao,
     data: data,
     };
-    this.httpClient.post<{mensagem: string}> ('http://localhost:3000/api/notas',
-    notas.subscribe(
-    (dados) => {
+    this.httpClient.post<{mensagem: string}> ('http://localhost:3000/api/notas',notas)
+    .subscribe((dados) => {
     console.log(dados.mensagem);
     this.notas.push(notas);
     this.listaNotasAtualizada.next([...this.notas]);
